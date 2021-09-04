@@ -7,7 +7,7 @@ export default function Results(){
     return(
         <>
         <MyHead home />
-        <MyNavbar></MyNavbar>
+        <MyNavbar/>
         <ResCard 
             img="/images/manga1.jpeg" 
             title="title1" 

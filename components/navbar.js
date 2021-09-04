@@ -17,6 +17,7 @@ import {
   FormGroup
 } from 'reactstrap';
 import { useFormik } from 'formik';
+import Logo from './logo.js';
 
 function MyNav(props){
     return (
@@ -93,7 +94,8 @@ export default class MyNavbar extends React.Component {
     render() {
         return(
             <div>
-                <Navbar color="light" light expand="md">
+                <Navbar color="light" light expand="md" className="fixed-top">
+                    <NavbarBrand> <Logo home={false}/></NavbarBrand>
                     <Search />
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
