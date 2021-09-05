@@ -1,12 +1,12 @@
-import { loadGetInitialProps } from 'next/dist/shared/lib/utils';
 import {
     Container, Col, Row
   } from 'reactstrap';
+import styles from './res_card.module.scss';
 
 export default function ResCard(props){
     return(
         <>
-            <Container>
+            <Container className={styles.container}>
                 <Row>
                     <Col xs="6" sm="2">
                         <img src={props.img} class="img-fluid"/>
