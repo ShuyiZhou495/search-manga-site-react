@@ -24,7 +24,7 @@ import styles from './navbar.module.scss';
 
 function MyNavItem(props){
     return (
-        <Col md={{ size: 4, offset: props.offset}} className={styles.navitem}>
+        <Col md={{ size: 3, offset: props.offset}} className={styles.navitem}>
         <NavItem >
             <NavLink className={styles.font} href="/posts/first"> <b className={styles.color}>{props.children}</b> </NavLink>
         </NavItem>
@@ -41,7 +41,6 @@ function NavBorder(props){
 function MyNav(props){
     return (
         <Nav className={"mr-auto", styles.nav} navbar>
-            <NavBorder />
             <MyNavItem>開始</MyNavItem>
             <NavBorder />
             <MyNavItem>日光</MyNavItem>
@@ -86,8 +85,8 @@ function Search(props){
         }
     })
     return(
-        <Col sm={{size: 4, offset: 8}} className={styles.searchborder, "fixed-top"}>
-        <Form inline onSubmit={formik.handleSubmit}>
+        <Col sm={{size: 3, offset: 8}} className={"fixed-top"}>
+        <Form inline onSubmit={formik.handleSubmit} className={styles.searchclip}>
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
             <Input
                 id="query"
@@ -97,7 +96,7 @@ function Search(props){
                 onChange={formik.handleChange}
                 value={formik.values.email}
                 className={styles.input}
-                size={17}
+                size={13}
             />
             <Button className={"my-2 my-sm-0", styles.search} outline color="dark" type="submit">
                 <SearchIcon />
@@ -128,7 +127,7 @@ export default class MyNavbar extends React.Component {
             <div>
             <div className={styles.navbar}>
                 <Navbar light expand="md" className="fixed-top">
-                    <NavbarBrand> <Logo home={false}/></NavbarBrand>
+                    <NavbarBrand className={styles.logo} > <Logo home={false}/></NavbarBrand>
                     
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>

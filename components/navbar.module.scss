@@ -16,8 +16,8 @@
 }
 
 $height: 120px;
-
-.navbar::after{
+@media only screen and (min-width: 768px) 
+{.navbar::after{
     content: '';
     background-color: white;
     top: -12px;
@@ -33,8 +33,8 @@ $height: 120px;
 }
 
 .navbar, .navbar::after{
-    width: 675px;
-    height: $height;
+    width: 547px;
+    height: $height ;
     position: fixed;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 73%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 73%, 0 100%);
@@ -50,6 +50,7 @@ $height: 120px;
     border-width: 10px;
     border-color: black;
     border-style: solid;
+    border-bottom-style: hidden;
 }
 
 .center{
@@ -72,22 +73,48 @@ $height: 120px;
 }
 
 
+
 .input{
+    margin-left: 10px;
+}
+
+@mixin search{
     @include search-setting;
     @include go-down;
+    z-index: 200;
+}
+
+.input{
+    margin-left: 20px;
+    @include search;
 }
 
 .search{
-    @include search-setting;
-    @include go-down;
+    @include search;
 }
 
-.searchborder{
-    border: solid;
-    border-color: black;
-    height: $height;
-    border-width: 10px;
-    border-bottom-style: hidden;
-    @include go-up;
-    text-align:center;
+.searchclip::after{
+    content: '';
+    background-color: white;
+    transform: translate(10px, -52px);
+    z-index: 109;
+    width: 300px;
 }
+
+.searchclip{
+    background-color: black;
+    top: 0;
+    z-index:99;
+    width: 320px;
+}
+
+.searchclip, .searchclip::after{
+    height: $height;
+    
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 76%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 76%);
+}
+
+.logo{
+    transform: translateY(-10px);
+}}

@@ -7,8 +7,8 @@ export default function Logo(props){
                 <Image
                 priority
                 src="/images/logo.png"
-                height={50}
-                width={50}
+                height={70}
+                width={70}
                 alt="logo"
                 />
             )
@@ -19,8 +19,8 @@ export default function Logo(props){
                 <Image
                 priority
                 src="/images/logo.png"
-                height={50}
-                width={50}
+                height={70}
+                width={70}
                 alt="logo"
                 />
                 </Link>
