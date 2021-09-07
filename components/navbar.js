@@ -86,7 +86,7 @@ function Search(props){
         }
     })
     return(
-        <Col sm="3" className={styles.searchborder}>
+        <Col sm={{size: 4, offset: 8}} className={styles.searchborder, "fixed-top"}>
         <Form inline onSubmit={formik.handleSubmit}>
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
             <Input
@@ -125,15 +125,18 @@ export default class MyNavbar extends React.Component {
 
     render() {
         return(
+            <div>
             <div className={styles.navbar}>
                 <Navbar light expand="md" className="fixed-top">
                     <NavbarBrand> <Logo home={false}/></NavbarBrand>
-                    <Search/>
+                    
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <MyNav />
                     </Collapse>
                 </Navbar>
+            </div>
+            <Search/>
             </div>
         )
     }

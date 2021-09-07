@@ -33,7 +33,7 @@ $height: 120px;
 }
 
 .navbar, .navbar::after{
-    width: 1027px;
+    width: 675px;
     height: $height;
     position: fixed;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 73%, 0 100%);
@@ -57,6 +57,7 @@ $height: 120px;
     background-color: grey;
     z-index: 120;
     display: block;
+    height: 130px;
 }
 
 .font{
