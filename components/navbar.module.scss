@@ -16,105 +16,129 @@
 }
 
 $height: 120px;
+
+@media only screen and (max-width: 768px) 
+{
+
+    .hidesmall{
+        visibility: visible;
+    }
+    .hidelarge{
+        visibility: hidden;
+    }
+}
+
 @media only screen and (min-width: 768px) 
-{.navbar::after{
-    content: '';
-    background-color: white;
-    top: -12px;
-    left: 0;
-    right: 0;
-    z-index: 109;
-}
+{
 
-.navbar{
-    background-color: black;
-    top: 0;
-    z-index:99;
-}
+    .hidelarge{
+        visibility: visible;
+    }
 
-.navbar, .navbar::after{
-    width: 547px;
-    height: $height ;
-    position: fixed;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 73%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 73%, 0 100%);
+    .hidesmall{
+        visibility: hidden;
+    }
 
-}
+    .nav{
+        @include go-up;
+        height: $height;
+    }
 
-.nav{
-    @include go-up;
-    height: $height;
-}
-
-.navitem{
-    border-width: 10px;
-    border-color: black;
-    border-style: solid;
-    border-bottom-style: hidden;
-}
-
-.center{
-    content: '';
-    background-color: grey;
-    z-index: 120;
-    display: block;
-    height: 130px;
-}
-
-.font{
-    padding-top: 30px;
-    margin-left: 10px;
-    font-size: larger;
-    @include font-family;
-}
-
-.color{
-    color: black;
-}
-
-
-
-.input{
-    margin-left: 10px;
-}
-
-@mixin search{
-    @include search-setting;
-    @include go-down;
-    z-index: 200;
-}
-
-.input{
-    margin-left: 20px;
-    @include search;
-}
-
-.search{
-    @include search;
-}
-
-.searchclip::after{
-    content: '';
-    background-color: white;
-    transform: translate(10px, -52px);
-    z-index: 109;
-    width: 300px;
-}
-
-.searchclip{
-    background-color: black;
-    top: 0;
-    z-index:99;
-    width: 320px;
-}
-
-.searchclip, .searchclip::after{
-    height: $height;
+    .navbar::after{
+        content: '';
+        background-color: white;
+        top: -12px;
+        left: 0;
+        right: 0;
+        z-index: 109;
+    }
     
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 76%);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 76%);
+    .navbar{
+        background-color: black;
+        top: 0;
+        z-index:99;
+    }
+
+    
+    .navbar, .navbar::after{
+        width: 547px;
+        height: $height ;
+        position: fixed;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 73%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 73%, 0 100%);
+    }
+
+    .navitem{
+        border-width: 10px;
+        border-color: black;
+        border-style: solid;
+        border-bottom-style: hidden;
+    }
+
+    .center{
+        content: '';
+        background-color: grey;
+        z-index: 120;
+        display: block;
+        height: 130px;
+    }
+
+    .font{
+        padding-top: 30px;
+        margin-left: 10px;
+        font-size: larger;
+        @include font-family;
+    }
+
+    .color{
+        color: black;
+    }
+
+
+
+    .input{
+        margin-left: 10px;
+    }
+
+    @mixin search{
+        @include search-setting;
+        @include go-down;
+        z-index: 200;
+    }
+
+    .input{
+        margin-left: 20px;
+        @include search;
+    }
+
+    .search{
+        @include search;
+    }
+
+    .searchclip::after{
+        content: '';
+        background-color: white;
+        transform: translate(10px, -52px);
+        z-index: 109;
+        width: 300px;
+    }
+
+    .searchclip{
+        background-color: black;
+        top: 0;
+        z-index:99;
+        width: 320px;
+    }
+
+    .searchclip, .searchclip::after{
+        height: $height;
+        
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 76%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 76%);
+    }
+
+    .logo{
+        transform: translateY(-10px);
+    }
 }
 
-.logo{
-    transform: translateY(-10px);
-}}

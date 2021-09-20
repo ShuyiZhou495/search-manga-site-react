@@ -20,6 +20,7 @@ import {
 } from 'reactstrap';
 import { useFormik } from 'formik';
 import Logo from './logo.js';
+import useWindowDimensions from './useWindowDimension.js'
 import styles from './navbar.module.scss';
 
 function MyNavItem(props){
@@ -75,7 +76,8 @@ function SearchIcon(){
         </svg>
     )
 }
-function Search(props){
+
+function TheForm(props){
     const formik = useFormik({
         initialValues: {
             query: '',
@@ -84,37 +86,69 @@ function Search(props){
             alert(JSON.stringify(values, null, 2));
         }
     })
+        return(
+            <Form inline onSubmit={formik.handleSubmit} className={styles.searchclip}>
+                <FormGroup>
+                <Input
+                    id="query"
+                    name="query"
+                    type="search"
+                    placeholder="検索"
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                    className={styles.input}
+                    size={13}
+                />
+                </FormGroup>
+            </Form>
+    
+        )
+    
+}
+
+function SearchBig(props){
     return(
-        <Col sm={{size: 3, offset: 8}} className={"fixed-top"}>
-        <Form inline onSubmit={formik.handleSubmit} className={styles.searchclip}>
-            <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-            <Input
-                id="query"
-                name="query"
-                type="search"
-                placeholder="検索"
-                onChange={formik.handleChange}
-                value={formik.values.email}
-                className={styles.input}
-                size={13}
-            />
-            <Button className={"my-2 my-sm-0", styles.search} outline color="dark" type="submit">
-                <SearchIcon />
-            </Button>
-            </FormGroup>
-        </Form>
+        <div className={styles.hidelarge}>
+        <Col sm={{size: 3, offset: 8}} xs={{size:12}} className={"fixed-top"}>
+            <TheForm />
         </Col>
+        </div>
     )
+}
+
+class SearchCollapse extends React.Component{
+render(){
+        return(
+            <div className={styles.hidesmall}>
+                <TheForm />
+            </div>
+        )
+    }
 }
 
 export default class MyNavbar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOpen: false
+            isOpen: false,
+            width: 0
         };
         this.toggle = this.toggle.bind(this);
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
+
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+      }
+      
+      componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+      }
+      
+      updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+      }
 
     toggle () {
         this.setState(prevState => ({
@@ -123,21 +157,36 @@ export default class MyNavbar extends React.Component {
     }
 
     render() {
-        return(
-            <div>
-            <div className={styles.navbar}>
-                <Navbar light expand="md" className="fixed-top">
-                    <NavbarBrand className={styles.logo} > <Logo home={false}/></NavbarBrand>
-                    
-                    <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <MyNav />
-                    </Collapse>
-                </Navbar>
-            </div>
-            <Search/>
-            </div>
-        )
+        
+        if (this.state.width > 768){
+            return(
+                <div>
+                <div className={styles.navbar}>
+                    <Navbar light expand="md" className="fixed-top">
+                        <NavbarBrand className={styles.logo} > <Logo home={false}/></NavbarBrand>
+                        <NavbarToggler onClick={this.toggle} />
+                            <MyNav />
+                    </Navbar>
+                </div>
+                <SearchBig/>
+                </div>
+            )
+        }
+        else{
+            return(
+                <div className={styles.navbar}>
+                    <Navbar light expand="md" className="fixed-top">
+                        <NavbarBrand className={styles.logo} > <Logo home={false}/></NavbarBrand>
+                        <SearchCollapse />
+                        <NavbarToggler onClick={this.toggle} />
+                        <Collapse isOpen={this.state.isOpen} navbar>
+                            <MyNav />
+                        </Collapse>
+                    </Navbar>
+                </div>
+            )
+        }
+
     }
 
 }
