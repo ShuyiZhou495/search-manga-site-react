@@ -1,5 +1,5 @@
 import MyHead from '../components/myhead'
-import MyNavbar from '../components/navbar'
+import MyNavbar from '../components/navbar_normal'
 import ResCard from '../components/res_card'
 
 

@@ -9,7 +9,10 @@
 
 .div{
     margin-top: 10px;
+    margin-right: 0;
 }
+
+$ani-time: 1s;
 
 @mixin ani-test{
     animation-iteration-count: infinite;
@@ -18,35 +21,36 @@
 
 @mixin leftslide{
     animation-name: leftslide;
-    animation-duration: 3s;
+    animation-duration: $ani-time;
     animation-fill-mode: forwards;
 }
 
 @mixin leftslide90{
     animation-name: leftslide90;
-    animation-duration: 3s;
+    animation-duration: $ani-time;
     animation-fill-mode: forwards;
 }
 
 @mixin rightslide{
     animation-name: rightslide;
-    animation-duration: 3s;
+    animation-duration: $ani-time;
 }
 
 @mixin rightslide90{
     animation-name: rightslide90;
-    animation-duration: 3s;
+    animation-duration: $ani-time;
 }
 
 @mixin slidein{
     animation-name: slidein;
-    animation-duration: 3s;
+    animation-duration: $ani-time;
     animation-fill-mode: forwards;
 }
 
 @mixin slideout{
     animation-name: slideout;
-    animation-duration: 3s;
+    animation-duration: $ani-time;
+    animation-fill-mode: forwards;
 }
 
 .leftslide{
@@ -64,19 +68,17 @@
 .sites{
     overflow: hidden;
     position: absolute;
-    transform: translateX(100%);
     @include slideout();
 }
 
 .sitesc{
     overflow: hidden;
     position: absolute;
-    transform: translateX(100%);
     @include slidein();
 }
 
 .contents{
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);;
+    overflow: hidden;
 }
 
 .container:hover{
@@ -111,14 +113,21 @@
     flex: 1;
 }
 
+
+
 .vertical_align{
     @include vertical_align();
-    @include rightslide90();
+    @media only screen and (min-width: 768px) {
+        @include rightslide90();
+    }   
 }
+    
 
 .vertical_alignc{
     @include vertical_align();
-    @include leftslide90();
+    @media only screen and (min-width: 768px) {
+        @include leftslide90();
+    }
 }
 
 .leftslidebutton{
@@ -130,7 +139,6 @@
 
 .rightslide{
     @include rightslide();
-
 }
 
 @keyframes leftslide {
@@ -154,13 +162,13 @@
 }
 
 @keyframes slidein {
-    from {right: 0%;}
-    to {right: 90%;}
+    from {left: 100%;}
+    to {left: 0%;}
 }
 
 @keyframes slideout {
-    from {right: 90%;}
-    to {right: 0%;}
+    from {left: 0%;}
+    to {left: 100%;}
 }
 
 .lay{

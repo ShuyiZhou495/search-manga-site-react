@@ -34,29 +34,29 @@ export default class ResCard extends React.Component{
         const show = this.state.showSites
         return(
             <>
-            <div className={styles.div}>
+            <Col xs={{size: 12}} className={styles.div}>
                 <Container className={styles.container}>
                     <Row>
-                        <Col xs="3" sm="2">
+                        <Col xs="12" sm="2">
                             <img src={this.props.img} class="img-fluid"/>
                         </Col>
-                        <Col xs="7" sm="9" className={styles.contents}>
+                        <Col xs="12" sm="9" className={styles.contents}>
                             <Row className={styles.title_block}>
                                 <text className={styles.line}>|</text>
                                 <text className={styles.title} id="manga_title">{this.props.title}</text>    
                             </Row>
                             <Row>
-                                <Col xs="10" sm="11">
+                                <Col xs="12" sm="11">
                                 <Col className={show?styles.leftslide:styles.rightslide}>
                                     <text id="manga_description" className={styles.description}>{this.props.description}</text>
                                 </Col>
                                 </Col>
-                                <Col xs="2" sm="1" key={show} className={show? styles.vertical_alignc: styles.vertical_align}>
+                                <Col xs="12" sm="1" key={show} className={show? styles.vertical_alignc: styles.vertical_align}>
                                     <Button outline color="secondary" className={styles.leftslidebutton} onClick={this.leftSlide}>
                                     {show? "紹介": "サイト"}<p>{show?<ChevronRight />: <ChevronLeft />}</p>
                                     </Button>
                                 </Col>
-                                <Col xs={{size: 10, offset: 2}} sm={{size: 11, offset: 1}} className={show?styles.sitesc: styles.sites}>
+                                <Col xs={{size: 12}} sm={{size: 11, offset: 1}} className={show?styles.sitesc: styles.sites}>
                                     <text id="manga_description" className={styles.sitestext}>{this.props.sites}</text>
                                 </Col>
                             </Row>
@@ -64,7 +64,7 @@ export default class ResCard extends React.Component{
 
                     </Row>
                 </Container>
-            </div>
+            </Col>
             </>
         )
     }
