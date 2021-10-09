@@ -79,7 +79,7 @@ function TheForm(props){
         }
     })
         return(
-            <Form inline onSubmit={formik.handleSubmit} className={styles.searchclip}>
+            <Form inline onSubmit={formik.handleSubmit} className={styles.search}>
                 <FormGroup>
                     <Input
                         id="query"
@@ -89,10 +89,11 @@ function TheForm(props){
                         onChange={formik.handleChange}
                         value={formik.values.email}
                         className={styles.input}
-                        size={10}
+                        size={17}
                     />
                     <Button 
                         type="submit"
+                        className={styles.button}
                     >
                         <SearchIcon/>
                     </Button>
