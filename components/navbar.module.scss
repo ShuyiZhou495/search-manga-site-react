@@ -8,7 +8,7 @@
 }
 
 @mixin go-up {
-    transform: translateY(-20px);
+    transform: translateY(-27px);
 }
 
 @mixin go-down {
@@ -17,7 +17,7 @@
 
 $height: 120px;
 
-@media only screen and (max-width: 768px) 
+@media only screen and (max-width: 780px) 
 {
 
     .hidesmall{
@@ -28,7 +28,7 @@ $height: 120px;
     }
 }
 
-@media only screen and (min-width: 768px) 
+@media only screen and (min-width: 780px) 
 {
 
     .hidelarge{
@@ -109,6 +109,7 @@ $height: 120px;
     .input{
         margin-left: 20px;
         @include search;
+        border-style: hidden;
     }
 
     .search{

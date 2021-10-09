@@ -1,3 +1,168 @@
 .container{
-    padding-top: 20px;
+    padding: 15px 15px 5px;
+    margin-top: 22px;
+    box-shadow: 0px 0px 0px;
+    border-left-style: solid;
+    border-left-color: white;
+    
+}
+
+.div{
+    margin-top: 10px;
+}
+
+@mixin ani-test{
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@mixin leftslide{
+    animation-name: leftslide;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@mixin leftslide90{
+    animation-name: leftslide90;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@mixin rightslide{
+    animation-name: rightslide;
+    animation-duration: 3s;
+}
+
+@mixin rightslide90{
+    animation-name: rightslide90;
+    animation-duration: 3s;
+}
+
+@mixin slidein{
+    animation-name: slidein;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@mixin slideout{
+    animation-name: slideout;
+    animation-duration: 3s;
+}
+
+.leftslide{
+    @include leftslide();
+}
+
+.rightslide{
+    @include rightslide();
+}
+
+.slidein{
+    @include slidein();
+}
+
+.sites{
+    overflow: hidden;
+    position: absolute;
+    transform: translateX(100%);
+    @include slideout();
+}
+
+.sitesc{
+    overflow: hidden;
+    position: absolute;
+    transform: translateX(100%);
+    @include slidein();
+}
+
+.contents{
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);;
+}
+
+.container:hover{
+    border-left-color: black;
+    box-shadow: 0 0 5px grey;
+}
+
+.title{
+    font-size: 23px;
+}
+
+.line{
+    font-size: 23px;
+    font-weight: bold;
+    margin-right: 20px;
+    color: grey;
+}
+
+.title_block{
+    border-bottom-style: solid;
+    border-width: thin;
+}
+
+.description{
+    font-size: 15px;
+}
+
+@mixin vertical_align{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.vertical_align{
+    @include vertical_align();
+    @include rightslide90();
+}
+
+.vertical_alignc{
+    @include vertical_align();
+    @include leftslide90();
+}
+
+.leftslidebutton{
+    @include vertical_align();
+    border-style: hidden;
+    border-radius: 0%;
+    border-bottom-style: solid;
+}
+
+.rightslide{
+    @include rightslide();
+
+}
+
+@keyframes leftslide {
+    from {right: 0%;}
+    to {right: 100%;}
+}
+
+@keyframes leftslide90 {
+    from {right: 0%;}
+    to {right: 90%;}
+}
+
+@keyframes rightslide {
+    from {right: 100%;}
+    to {right: 0%;}
+}
+
+@keyframes rightslide90 {
+    from {right: 90%;}
+    to {right: 0%;}
+}
+
+@keyframes slidein {
+    from {right: 0%;}
+    to {right: 90%;}
+}
+
+@keyframes slideout {
+    from {right: 90%;}
+    to {right: 0%;}
+}
+
+.lay{
+    z-index: 20;
 }

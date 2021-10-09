@@ -20,7 +20,6 @@ import {
 } from 'reactstrap';
 import { useFormik } from 'formik';
 import Logo from './logo.js';
-import useWindowDimensions from './useWindowDimension.js'
 import styles from './navbar.module.scss';
 
 function MyNavItem(props){
@@ -97,7 +96,7 @@ function TheForm(props){
                     onChange={formik.handleChange}
                     value={formik.values.email}
                     className={styles.input}
-                    size={13}
+                    size={17}
                 />
                 </FormGroup>
             </Form>
@@ -158,7 +157,7 @@ export default class MyNavbar extends React.Component {
 
     render() {
         
-        if (this.state.width > 768){
+        if (this.state.width > 780){
             return(
                 <div>
                 <div className={styles.navbar}>
