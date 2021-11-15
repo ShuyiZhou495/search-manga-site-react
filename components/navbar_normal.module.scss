@@ -12,12 +12,14 @@
 }
 
 .search{
+    border-radius: 0;
     @media only screen and (max-width: 576px){
         transform: translateY(10px);
     }
 }
 
 .button{
+    border-radius: 0;
     @media only screen and (max-width: 576px){
         display: none;
     }
